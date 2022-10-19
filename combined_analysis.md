@@ -74,7 +74,7 @@ extension json. In all the following, you have to replace `farah_lc` by `petrov_
 
 	* **`NSBH` type**
 
-			light_curve_analysis_condor --model Bu2019nsbh --prior ./nmma/priors/Bu2019nsbh.prior --svd-path  ./nmma/svdmodels --outdir outdir_NSBH --label injection --injection ../GW_EM_joint/EMdata/farah_lc/outdir_BNS/Bu2019lnsbh_injection.json --injection-num 2500 --generation-seed 816 323 364 564 851 --ztf-ToO 180 300 --condor-dag-file condor.dag --condor-sub-file condor.sub --bash-file condor.sh
+			light_curve_analysis_condor --model Bu2019nsbh --prior ./nmma/priors/Bu2019nsbh.prior --svd-path  ./nmma/svdmodels --outdir outdir_NSBH --label injection_Bu2019nsbh --injection ../GW_EM_joint/EMdata/farah_lc/outdir_BNS/Bu2019lnsbh_injection.json --injection-num 2500 --generation-seed 816 323 364 564 851 --ztf-ToO 180 300 --condor-dag-file condor.dag --condor-sub-file condor.sub --bash-file condor.sh
 		
 	then submit the job 
 
