@@ -58,10 +58,12 @@ extension json. In all the following, you have to replace `farah_lc` by `petrov_
 
 
 	Here, to get `lightcurve posteriors`  you  just run the followinga command lines. './GW_EM_joint/EMdata/farah_lc/outdir_BNS/BNS' or './GW_EM_joint/EMdata/farah_lc/utdir_NSBH/NSBH' according to the type of `binary` population,  will house the posteriors of the electromagnetic data you will produce: in particular the, where with injection about `25,000` injections for `ZTF` ligthcurve and '12,500' for 'Rubin' lightcurve. We now compute posteriors using **[nmma]** on this simulated set of  events, of which we assume a fraction is detectable by `ZTF` or `Rubin`. The result can be find at  ./output/EMdata
-
-
+	
+	
 	## **For `ZTF` telescope**
-
+	
+	Create just a folder to run the condor process `light_curve_analysis_condor.....` , just because condor files create alot of files,
+	
 	Feel free to create another folder if useful but make sure  to check out the right direcories of your data.
 
 	* **`BNS` type**
@@ -93,6 +95,15 @@ extension json. In all the following, you have to replace `farah_lc` by `petrov_
 	then submit the job 
 
 		condor_submit_dag -f condor.dag
+		
+	to see the evolution of condor process :
+		
+		condor_q
+	
+	to observe the process in realtime
+		
+		tail -f condor.dag.dagman.out
+		
 
 	* **`NSBH` type**
 
