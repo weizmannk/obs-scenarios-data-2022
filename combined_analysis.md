@@ -47,17 +47,17 @@ extension json. In all the following, you have to replace `farah_lc` by `petrov_
 
 	* **`BNS` type**
 			
-			nmma_create_injection --prior-file ./nmma/priors/Bu2019lm.prior --injection-file ./GW_EM_joint/EMdata/Farah_subpops/runs/O4/bns_farah/injections.dat --eos-file  ./nmma/example_files/eos/ALF2.dat --binary-type BNS --n-injection 2500 --original-parameters --extension json --aligned-spin --binary-type BNS -f ./GW_EM_joint/EMdata/farah_lc/outdir_BNS/Bu2019lm_injection
+			nmma_create_injection --prior-file ./nmma/priors/Bu2019lm.prior --injection-file ./GW_EM_joint/Farah_subpops/runs/O4/bns_farah/injections.dat --eos-file  ./nmma/example_files/eos/ALF2.dat --binary-type BNS --n-injection 2500 --original-parameters --extension json --aligned-spin --binary-type BNS -f ./GW_EM_joint/EMdata/farah_lc/outdir_BNS/Bu2019lm_injection
 
 	* **`NSBH` type**
 
-			nmma_create_injection --prior-file ./nmma/priors/Bu2019nsbh.prior --injection-file ./GW_EM_join/EMdata/Farah_subpops/runs/O4/nsbh_farah/injections.dat --eos-file  ./nmma/example_files/eos/ALF2.dat --binary-type NSBH --n-injection 2500 --original-parameters --extension json --aligned-spin ./GW_EM_joint/EMdata/farah_lc/outdir_NSBH/Bu2019nsbh_injection
+			nmma_create_injection --prior-file ./nmma/priors/Bu2019nsbh.prior --injection-file ./GW_EM_join/Farah_subpops/runs/O4/nsbh_farah/injections.dat --eos-file  ./nmma/example_files/eos/ALF2.dat --binary-type NSBH --n-injection 2500 --original-parameters --extension json --aligned-spin ./GW_EM_joint/EMdata/farah_lc/outdir_NSBH/Bu2019nsbh_injection
 
 
 2. ### **Generate `lightcurve posteriors` using condor process to submit jobs** 
 
 
-	Here, to get `lightcurve posteriors`  you  just run the followinga command lines. './GW_EM_joint/EMdata/farah_lc/outdir_BNS/BNS' or './GW_EM_joint/EMdata/farah_lc/utdir_NSBH/NSBH' according to the type of `binary` population,  will house the posteriors of the electromagnetic data you will produce: in particular the, where with injection about `25,000` injections for `ZTF` ligthcurve and '12,500' for 'Rubin' lightcurve. We now compute posteriors using **[nmma]** on this simulated set of  events, of which we assume a fraction is detectable by `ZTF` or `Rubin`. The result can be find at  ./output/EMdata
+	Here, to get `lightcurve posteriors`  you  just run the followinga command lines. './GW_EM_joint/EMdata/farah_lc/outdir_BNS/BNS' or './GW_EM_joint/EMdata/farah_lc/utdir_NSBH/NSBH' according to the type of `binary` population,  will house the posteriors of the electromagnetic data you will produce: in particular the, where with injection about `25,000` injections for `ZTF` ligthcurve and '12,500' for 'Rubin' lightcurve. We now compute posteriors using **[nmma]** on this simulated set of  events, of which we assume a fraction is detectable by `ZTF` or `Rubin`. The result can be find at  `/GW_EM_jointEMdata/farah_lc/outdir_BNS/BNS` or `./GW_EM_joint/EMdata/farah_lc/outdir_NSBH` when you use 'NSBH'.
 	
 	
 	## **For `ZTF` telescope**
@@ -68,7 +68,7 @@ extension json. In all the following, you have to replace `farah_lc` by `petrov_
 
 	* **`BNS` type**
 
-			light_curve_analysis_condor --model Bu2019lm --prior  ./nmma/priors/Bu2019lm.prior --svd-path   ./nmma/svdmodels --outdir ./GW_EM_joint/farah_lc/outdir_BNS --label injection_Bu2019lm --injection ./GW_EM_joint/EMdata/farah_lc/outdir_BNS/Bu2019lm_injection.json --injection-num 2500 --generation-seed 816 323 364 564 851 --ztf-ToO 180 300 --condor-dag-file condor.dag --condor-sub-file condor.sub --bash-file condor.sh
+			light_curve_analysis_condor --model Bu2019lm --prior  ./nmma/priors/Bu2019lm.prior --svd-path   ./nmma/svdmodels --outdir ./GW_EM_joint/EMdata/farah_lc/outdir_BNS --label injection_Bu2019lm --injection ./GW_EM_joint/EMdata/farah_lc/outdir_BNS/Bu2019lm_injection.json --injection-num 2500 --generation-seed 816 323 364 564 851 --ztf-ToO 180 300 --condor-dag-file condor.dag --condor-sub-file condor.sub --bash-file condor.sh
 
 	then submit the job 
 
@@ -76,7 +76,7 @@ extension json. In all the following, you have to replace `farah_lc` by `petrov_
 
 	* **`NSBH` type**
 
-			light_curve_analysis_condor --model Bu2019nsbh --prior ./nmma/priors/Bu2019nsbh.prior --svd-path  ./nmma/svdmodels --outdir outdir_NSBH --label injection_Bu2019nsbh --injection ../GW_EM_joint/EMdata/farah_lc/outdir_BNS/Bu2019lnsbh_injection.json --injection-num 2500 --generation-seed 816 323 364 564 851 --ztf-ToO 180 300 --condor-dag-file condor.dag --condor-sub-file condor.sub --bash-file condor.sh
+			light_curve_analysis_condor --model Bu2019nsbh --prior ./nmma/priors/Bu2019nsbh.prior --svd-path  ./nmma/svdmodels --outdir ./GW_EM_joint/EMdata/farah_lc/outdir_NSBH --label injection_Bu2019nsbh --injection ./GW_EM_joint/EMdata/farah_lc/outdir_BNS/Bu2019lnsbh_injection.json --injection-num 2500 --generation-seed 816 323 364 564 851 --ztf-ToO 180 300 --condor-dag-file condor.dag --condor-sub-file condor.sub --bash-file condor.sh
 		
 	then submit the job 
 
