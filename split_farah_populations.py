@@ -8,11 +8,6 @@ from astropy.cosmology import Planck15 as cosmo, z_at_value
 import numpy as np
 
 
-# the runs data direction
-path_dir = '/runs'
-
-
-
 # the distribution flders 
 distribution = ['Farah', 'Petrov']
 
