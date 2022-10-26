@@ -28,7 +28,7 @@ from matplotlib import pyplot as plt
 plt.style.use('seaborn-paper')
 
 
-path_dir = '/home/wkiendrebeogo/Projets/LVK-collaboration/GihubStock/analyses-observing-scenarios-data/outdir/drawn_10_CBC/runs'
+path_dir = './outdir/drawn_10_CBC/runs'
 
 outdir = "./paper_plots"
 
