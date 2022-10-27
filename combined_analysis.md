@@ -51,7 +51,7 @@ extension json. In all the following, you have to replace `farah_lc` by `petrov_
 
 	* **`NSBH` type**
 
-			nmma_create_injection --prior-file ./nmma/priors/Bu2019nsbh.prior --injection-file ./GW_EM_join/Farah_subpops/runs/O4/nsbh_farah/injections.dat --eos-file  ./nmma/example_files/eos/ALF2.dat --binary-type NSBH --n-injection 2500 --original-parameters --extension json --aligned-spin ./GW_EM_joint/EMdata/farah_lc/outdir_NSBH/Bu2019nsbh_injection
+			nmma_create_injection --prior-file ./nmma/priors/Bu2019nsbh.prior --injection-file ./GW_EM_join/Farah_subpops/runs/O4/nsbh_farah/injections.dat --eos-file  ./nmma/example_files/eos/ALF2.dat --binary-type NSBH --n-injection 2500 --original-parameters --extension json --aligned-spin -f ./GW_EM_joint/EMdata/farah_lc/outdir_NSBH/Bu2019nsbh_injection
 
 
 2. ### **Generate `lightcurve posteriors` using condor process to submit jobs**
