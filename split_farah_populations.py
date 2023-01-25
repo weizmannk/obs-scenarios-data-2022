@@ -11,12 +11,12 @@ import numpy as np
 # the distribution flders
 distribution = ['Farah'] #, 'Petrov']
 
-pops = ['BNS', 'NSBH'] #, 'BBH']
-run_names = run_dirs=  ['O4', 'O5']
+pops = ['BNS', 'NSBH', 'BBH']
+run_names = run_dirs=  ['O3', 'O4', 'O5']
 
 
 for dist in distribution:
-    outdir = f'{dist}/runs'
+    outdir = f'{dist}_data/runs'
     if not os.path.isdir(outdir):
         os.makedirs(outdir)
 
@@ -27,7 +27,7 @@ for dist in distribution:
 
         for run_name, run_dir in zip(tqdm(run_names), run_dirs):
 
-            path = Path(f'/home/wkiendrebeogo/Projets/LVK-collaboration/runs/{run_dir}/farah')
+            path = Path(f'{dist}/runs/{run_dir}/farah')
             injections = Table.read(str(path/'injections.dat'), format='ascii.fast_tab')
 
             table = injections
@@ -50,7 +50,7 @@ for dist in distribution:
 
                 if pop == 'BNS':
                     data = table[(source_mass1 < ns_max_mass) & (source_mass2 < ns_max_mass)]
-                elif pop == 'NSBH':
+                elif   pop == 'NSBH':
                     data= table[(source_mass1 >= ns_max_mass) & (source_mass2 < ns_max_mass)]
                 else:
                     data = table[(source_mass1 >= ns_max_mass) & (source_mass2 >= ns_max_mass)]
