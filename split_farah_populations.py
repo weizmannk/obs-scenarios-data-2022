@@ -12,7 +12,7 @@ import numpy as np
 distribution = ['Farah'] #, 'Petrov']
 
 pops = ['BNS', 'NSBH', 'BBH']
-run_names = run_dirs=  ['O3', 'O4', 'O5']
+run_names = run_dirs=  ['O4', 'O5']
 
 
 for dist in distribution:
