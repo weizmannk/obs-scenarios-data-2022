@@ -4,19 +4,19 @@ from pathlib import Path
 import shutil
 from astropy.table import join, Table
 from astropy import units as u
-from astropy.cosmology import Planck15 as cosmo, z_at_value
+from astropy.cosmology import Planck18 as cosmo, z_at_value
 import numpy as np
 
 
 # the distribution flders
-distribution = ['Farah'] #, 'Petrov']
+distribution = ['Farah', 'Petrov']
 
 pops = ['BNS', 'NSBH', 'BBH']
-run_names = run_dirs=  ['O4', 'O5']
+run_names = run_dirs=  ['O3', 'O4', 'O5']
 
 
 for dist in distribution:
-    outdir = f'{dist}_data/runs'
+    outdir = f'nmma_GWdata/{dist}_data/runs'
     if not os.path.isdir(outdir):
         os.makedirs(outdir)
 
@@ -41,7 +41,7 @@ for dist in distribution:
             source_mass2 = table['mass2']/zp1
 
             print("===============================================================")
-            print(f'The number of subpopulation in {run_name} is : ')
+            print(f'The number of subpopulation in {run_name} in within the radius of 15740 Mpc : ')
 
             for pop in pops:
                 pop_dir = Path(f"{outdir}/{run_dir}/{pop.lower()}_farah")
@@ -54,8 +54,14 @@ for dist in distribution:
                     data= table[(source_mass1 >= ns_max_mass) & (source_mass2 < ns_max_mass)]
                 else:
                     data = table[(source_mass1 >= ns_max_mass) & (source_mass2 >= ns_max_mass)]
-
+                
+                #select data with z < 1.98
+                data = data[data['distance']<= 15740]
+                #data['distance']= 50 
+                
                 data.write(Path(f"{pop_dir}/injections.dat"), format='ascii.tab', overwrite=True)
+                
+                
 
                 print(f'{pop} {len(data)} ; ')
 

@@ -1,7 +1,3 @@
-## From Shreya Annand 
-##https://github.com/growth-astro/proposals/blob/main/LIGO_observing_scenarios_distcut.py
-
-
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
@@ -18,9 +14,9 @@ import astropy.units as u
 #matplotlib.rcParams['figure.figsize'] = (18, 10.)
 matplotlib.rcParams['xtick.labelsize'] = 12.0
 matplotlib.rcParams['ytick.labelsize'] = 12.0
-matplotlib.rcParams['axes.labelsize'] = 20.0
-matplotlib.rcParams['legend.fontsize'] = 12
-matplotlib.rcParams['axes.titlesize'] = 20
+matplotlib.rcParams['axes.labelsize'] = 22.0
+matplotlib.rcParams['legend.fontsize'] = 14
+matplotlib.rcParams['axes.titlesize'] = 18
 #matplotlib.style.use('seaborn-colorblind')
 
 matplotlib.use('agg')
@@ -124,19 +120,23 @@ for run_name in run_names:
         sax[0].text(2.8, 0.4, 'NSBH',color='k',fontsize=22, bbox = bbox)
         bbox = dict(facecolor = 'white', alpha = 0.7,edgecolor='goldenrod',linestyle='--', linewidth=2)
         sax[0].text(20, 0.4, 'BNS',color='k',fontsize=22, bbox = bbox)
-        sax[0].text(2.25, 0.3, f'<N>={np.round(np.mean(realizations_NSBH))}', fontsize=22)
-        sax[0].text(18, 0.3,   f'<N>={np.round(np.mean(realizations_BNS))}',  fontsize=22)
+        sax[0].text(2.25, 0.3, f'<N>={int(np.round(np.mean(realizations_NSBH)))}', fontsize=22)
+        sax[0].text(18, 0.3,   f'<N>={int(np.round(np.mean(realizations_BNS)))}',  fontsize=22)
+        sax[0].text(-2, 1.01, r'Run O4', color='blue',fontname="Times New Roman",  fontweight="bold", fontsize=22)    
 
     else :
-        sax[1].hist(realizations_BNS, bins=bins, label='O4 BNS in 400 Mpc', density=True, cumulative=True, histtype='step', linestyle='--', color='goldenrod', linewidth=3)
-        sax[1].hist(realizations_NSBH,bins=bins, label='O4 NSBH in 400 Mpc', density=True, cumulative=True, histtype='step', linestyle=':', color='teal', linewidth=3)
+        sax[1].hist(realizations_BNS, bins=bins, label='O5 BNS in 400 Mpc', density=True, cumulative=True, histtype='step', linestyle='--', color='goldenrod', linewidth=3)
+        sax[1].hist(realizations_NSBH,bins=bins, label='O5 NSBH in 400 Mpc', density=True, cumulative=True, histtype='step', linestyle=':', color='teal', linewidth=3)
 
         bbox = dict(facecolor = 'white', alpha = 0.7,edgecolor='teal', linestyle=':', linewidth=2)
         sax[1].text(2.8, 0.4, 'NSBH',color='k',fontsize=22, bbox = bbox)
         bbox = dict(facecolor = 'white', alpha = 0.7,edgecolor='goldenrod',linestyle='--', linewidth=2)
         sax[1].text(20, 0.4, 'BNS',color='k',fontsize=22, bbox = bbox)
-        sax[1].text(2.25, 0.3, f'<N>={np.round(np.mean(realizations_NSBH), decimals=0)}', fontsize=22)
-        sax[1].text(18, 0.3,   f'<N>={np.round(np.mean(realizations_BNS), decimals=0)}',  fontsize=22)
+        sax[1].text(2.25, 0.3, f'<N>={int(np.round(np.mean(realizations_NSBH)))}', fontsize=22)
+        sax[1].text(18, 0.3,   f'<N>={int(np.round(np.mean(realizations_BNS)))}',  fontsize=22)
+        sax[1].text(-2, 1.01, r'Run O5', color='blue',fontname="Times New Roman", fontweight="bold", fontsize=22)    
+
+
 
 sax[0].set_ylabel('cumulative probability density')
 sax[0].set_title('Annual LVK-detected NS Mergers in O4 within 400 Mpc')
@@ -145,15 +145,17 @@ sax[0].set_xlabel('number of events')
 sax[1].set_title('Annual LVK-detected NS Mergers in O5 within 400 Mpc')
 sax[1].set_xlabel('number of events')
 sax[0].set_xlim(-4, 25)
-sax[1].set_xlim(-4, 28)
+sax[1].set_xlim(-4, 28.9)
 
-plt.gcf().set_size_inches(20, 12)
+plt.gcf().set_size_inches(20, 10)
 plt.subplots_adjust(
-            wspace=0.4,
-            hspace=0.4)
+        right=0.9,
+        wspace=0.4,
+        hspace=0.4)
 fig.tight_layout()
 
 
 
-plt.savefig('ndet_22mag_allsky_NSBH_os2022_O5.pdf', dpi=1000)
+plt.savefig('ndet_22mag_allsky_NSBH_os2022_O5.pdf', dpi=500)
 plt.close()
+
