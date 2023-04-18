@@ -10,18 +10,22 @@ import numpy as np
 
 path_dir = './Farah/'
 
+
+draw_number = 10
+
+outdir = f'outdir/drawn_{draw_number}_CBC/runs'
+if not os.path.isdir(outdir):
+os.makedirs(outdir)
+
+
 # the distribution flders
 distribution = ['Farah']
 
 pops = ['BNS']
 run_names = run_dirs=  ['O4']
 
-draw_number = 10
 
 for dist in distribution:
-    outdir = f'outdir/drawn_{draw_number}_CBC/runs'
-    if not os.path.isdir(outdir):
-        os.makedirs(outdir)
 
     if dist == 'Farah':
 

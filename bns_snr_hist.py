@@ -1,20 +1,24 @@
 import os
 from tqdm.auto import tqdm
 from pathlib import Path
-from astropy.table import join, Table,  hstack
+from astropy.table import  Table,  hstack
 from astropy import units as u
 from astropy.cosmology import Planck15 as cosmo, z_at_value
-import numpy as np
 
 import seaborn as sns
 from matplotlib.pyplot import figure
 from matplotlib import pyplot as plt
 #plt.style.use('seaborn-v0_8')
 
+
+outdir = 'Plots'
+if not os.path.isdir(outdir):
+    os.makedirs(outdir)
+
 # the runs data direction
 path_dir = './Farah/runs'
 
-run_names = run_dirs=  ['O4']
+run_names = run_dirs=  ['O4', 'O5']
 pops = ['BNS']
 
 
@@ -68,30 +72,30 @@ for run_name, run_dir in zip(tqdm(run_names), run_dirs):
     del injections, table, source_mass1, source_mass2, z, zp1,  data
     
 
-BNS = detection_table['O4']['BNS']
+    BNS = detection_table[run_name]['BNS']
 
-bns_color, nsbh_color, bbh_color = sns.color_palette(
-    'rocket', 3)
-n_bins= 150
-stat = "count" 
+    bns_color, nsbh_color, bbh_color = sns.color_palette(
+        'rocket', 3)
+    n_bins= 150
+    stat = "count" 
 
-# Figure Plot
-plt.clf()
-fig, axs2 = plt.subplots( tight_layout=True)
+    # Figure Plot
+    plt.clf()
+    fig, axs2 = plt.subplots( tight_layout=True)
 
-#axs1.hist(BNS['snr'], n_bins,  histtype="stepfilled", alpha=.4 , cumulative=True, color=bns_color,  label= 'BNS SNR in O4')
+    #axs1.hist(BNS['snr'], n_bins,  histtype="stepfilled", alpha=.4 , cumulative=True, color=bns_color,  label= 'BNS SNR in O4')
 
-axs2 = sns.histplot(BNS['snr'], stat=stat, cumulative=True, bins=25, fill=False, legend=True)
+    axs2 = sns.histplot(BNS['snr'], stat=stat, cumulative=True, bins=25, fill=False, legend=True)
 
-axs2 = sns.ecdfplot(BNS['snr'], stat=stat)
+    axs2 = sns.ecdfplot(BNS['snr'], stat=stat)
 
-axs2.set_ylabel('number')
-axs2.set_title(' SNR BNS cummulative')
+    axs2.set_ylabel('number')
+    axs2.set_title(' SNR BNS cummulative')
 
-#axs1.legend(loc=2)
+    #axs1.legend(loc=2)
 
 
-plt.xlabel('SNR')
+    plt.xlabel('SNR')
 
-plt.savefig(f'SNR_BNS_cummulative_hist.png')
-plt.close()
+    plt.savefig(f'{outdir}/SNR_BNS_cummulative_hist_{run_name}.png')
+    plt.close()
