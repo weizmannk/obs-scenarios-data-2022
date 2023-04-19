@@ -27,6 +27,12 @@ matplotlib.rcParams['axes.titlesize'] = 18
 
 path = 'Farah/runs/'
 
+
+outdir = 'Plots'
+if not os.path.isdir(outdir):
+    os.makedirs(outdir)
+    
+
 run_names = ['O4', 'O5']
 
 # For splitting into BNS, NSBH, and BBH populations
