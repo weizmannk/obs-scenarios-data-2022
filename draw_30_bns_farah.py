@@ -15,7 +15,7 @@ draw_number = 10
 
 outdir = f'outdir/drawn_{draw_number}_CBC/runs'
 if not os.path.isdir(outdir):
-os.makedirs(outdir)
+    os.makedirs(outdir)
 
 
 # the distribution flders
