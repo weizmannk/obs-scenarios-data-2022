@@ -47,7 +47,7 @@ extension json. In all the following, you have to replace `farah_lc` by `petrov_
 
 	* **`BNS` type**
 
-			nmma_create_injection --prior-file ./nmma/priors/Bu2019lm.prior --injection-file ./GW_EM_joint/Farah_subpops/runs/O4/bns_farah/injections.dat --eos-file  ./nmma/example_files/eos/ALF2.dat --binary-type BNS --n-injection 2500 --original-parameters --extension json --aligned-spin --binary-type BNS -f ./GW_EM_joint/EMdata/farah_lc/outdir_BNS/Bu2019lm_injection
+			nmma_create_injection --prior-file ./nmma/priors/Bu2019lm.prior --injection-file ./GW_EM_joint/Farah_subpops/runs/O4/bns_farah/injections.dat --eos-file  ./nmma/example_files/eos/ALF2.dat --binary-type BNS --original-parameters --extension json --aligned-spin --binary-type BNS -f ./GW_EM_joint/EMdata/farah_lc/outdir_BNS/Bu2019lm_injection
 
 	* **`NSBH` type**
 

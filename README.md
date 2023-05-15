@@ -2,7 +2,7 @@
 
 This repository contains the light files of the Simulated detections and localizations for LIGO, Virgo, and KAGRA.
 
-Il est constituer de la simulation de deux distributions Petrov et Farah
+It is constituted by the simulation of two distributions Petrov and Farah.
 
 Farah is a distribution drawn from the Power Law+ Dip+ Break model of Farah el al.2022
 
