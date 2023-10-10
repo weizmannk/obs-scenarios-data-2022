@@ -56,9 +56,18 @@ for run_name in run_names:
         freq_K1, asd_K1    = np.loadtxt(f'{path}/kagra_128Mpc.txt', unpack=True)
 
 
+## conversion de PSD en ADS
+ #   freq_L1, psd_L1     = np.loadtxt(f'{path}/aligo_O4high.txt', unpack=True)
+
+  #  asd_L1 = np.sqrt(psd_L1)
+
+  #  outdata = np.array([freq_L1, asd_L1]).T
+
+   # np.savetxt(X = outdata, fname = os.path.join(f'{path}', 'asd_L1.txt'))
+
 
     # Plot amplitude spectral density of the detectors
-    fig = pyplot.figure(figsize=(3.375,3))
+    fig = pyplot.figure(figsize=(3.375, 3))
     pyplot.loglog(freq_L1, asd_L1, label=r'$\mathrm{LIGO}\,\mathrm{H1-L1}$', color=colors['L1'], linewidth=1, alpha=0.7)
     pyplot.loglog(freq_V1, asd_V1, label=r'$\mathrm{Virgo}$', color=colors['V1'], linewidth=1, alpha=0.7)
     pyplot.loglog(freq_K1, asd_K1, label=r'$\mathrm{KAGRA}$', color=colors['K1'], linewidth=1, alpha=0.7)
@@ -92,3 +101,4 @@ for run_name in run_names:
     print("======================================")
     
     del  freq_L1, asd_L1, freq_V1, asd_V1, freq_K1, asd_K1 
+

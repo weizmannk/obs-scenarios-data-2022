@@ -190,7 +190,7 @@ plt.close()
 # Figure Plot 
 plt.clf()
 #fig, axs = plt.subplots(nrows=1, ncols=2, sharey=True, constrained_layout=True)
-rows,cols=2,1
+rows,cols=1,2
 gs = gridspec.GridSpec(rows,cols)
 sax = []
 
@@ -231,17 +231,22 @@ for run_name in run_names:
         sax[0].axvline(1600, linestyle='--', color='k', label=None, alpha=0.7)
 
 
-        sax[0].text(430, 0.12, '3 visits', rotation='vertical', fontsize=14, color='m')
-        sax[0].text(500, 0.22, 'P', rotation='vertical', fontsize=14, color='m')
-        sax[0].text(750, 0.18, '3 visits', rotation='vertical', fontsize=14, color='goldenrod')
-        sax[0].text(820, 0.27, 'C+P', rotation='vertical', fontsize=14, color='goldenrod')
-        sax[0].text(1550, 0.25, '3 visits', rotation='vertical', fontsize=14, alpha=0.9)
-        sax[0].text(1620, 0.25, 'C+P+M', rotation='vertical', fontsize=14., alpha=0.9)
+        sax[0].text(400, 0.12, '3 visits', rotation='vertical', fontsize=24, color='m')
+        sax[0].text(500, 0.22, 'P', rotation='vertical', fontsize=24, color='m')
+        sax[0].text(720, 0.18, '3 visits', rotation='vertical', fontsize=24, color='goldenrod')
+        sax[0].text(820, 0.27, 'C+P', rotation='vertical', fontsize=24, color='goldenrod')
+        sax[0].text(1510, 0.25, '3 visits', rotation='vertical', fontsize=24, alpha=0.9)
+        sax[0].text(1620, 0.25, 'C+P+M', rotation='vertical', fontsize=24., alpha=0.9)
+        
 
         # from 30 to 50%
         # plt.arrow(480, 0.05, 510, 0, width=0.01, head_width=0.1, head_length=70, length_includes_head=True, fc='b', ec='b')
         sax[0].arrow(480, 0.09, 320, 0, width=0.01, head_width=0.1, head_length=70, length_includes_head=True, fc='k', ec='k')
         # plt.ylim(0, 400)
+        
+        sax[0].tick_params(axis='both', labelsize=18, width=2)
+        for axis in ['top','bottom','left','right']:
+            sax[0].spines[axis].set_linewidth(2)
 
     else:
         sax[1].hist(allsky['area(90)'], bins=np.arange(0, 30000, 100), histtype='step', density=True, cumulative=True, label='90% C.R.', color='b')
@@ -253,34 +258,39 @@ for run_name in run_names:
 
 
         # three filter
-        sax[1].text(430, 0.15, '3 visits', rotation='vertical', fontsize=14, color='m')
-        sax[1].text(500, 0.25, 'P', rotation='vertical', fontsize=14, color='m')
-        sax[1].text(750, 0.18, '3 visits', rotation='vertical', fontsize=14, color='goldenrod')
-        sax[1].text(820, 0.27, 'C+P', rotation='vertical', fontsize=14, color='goldenrod')
-        sax[1].text(1550, 0.25, '3 visits', rotation='vertical', fontsize=14, alpha=0.9)
-        sax[1].text(1620, 0.25, 'C+P+M', rotation='vertical', fontsize=14., alpha=0.9)
+        sax[1].text(400, 0.15, '3 visits', rotation='vertical', fontsize=22, color='m')
+        sax[1].text(500, 0.25, 'P', rotation='vertical', fontsize=22, color='m')
+        sax[1].text(720, 0.18, '3 visits', rotation='vertical', fontsize=22, color='goldenrod')
+        sax[1].text(820, 0.27, 'C+P', rotation='vertical', fontsize=22, color='goldenrod')
+        sax[1].text(1510, 0.25, '3 visits', rotation='vertical', fontsize=22, alpha=0.9)
+        sax[1].text(1620, 0.25, 'C+P+M', rotation='vertical', fontsize=22, alpha=0.9)
 
         # from 30 to 50%
         # plt.arrow(480, 0.05, 510, 0, width=0.01, head_width=0.1, head_length=70, length_includes_head=True, fc='b', ec='b')
         sax[1].arrow(480, 0.09, 320, 0, width=0.01, head_width=0.1, head_length=70, length_includes_head=True, fc='k', ec='k')
         # plt.ylim(0, 400)
-      
+        
+        sax[1].tick_params(axis='both', labelsize=18, width=2)
+        for axis in ['top','bottom','left','right']:
+            sax[1].spines[axis].set_linewidth(2)
 
 
 
-sax[0].set_ylabel(f'fraction of O4 triggers', size=20, fontname="Times New Roman")
-#sax[0].set_xlabel('sky area (deg)', size=14)
+sax[0].set_ylabel(f'fraction of O4 triggers', size=26, fontname="Times New Roman")
+sax[0].set_xlabel('sky area (deg)',  size=25,  fontname="Times New Roman")
 sax[0].set_xlim(-1, 2000)
 
-sax[1].set_ylabel(f'fraction of O5 triggers', size=20,  fontname="Times New Roman")
-sax[1].set_xlabel('sky area (deg)',  size=22,  fontname="Times New Roman")
+sax[1].set_ylabel(f'fraction of O5 triggers', size=26,  fontname="Times New Roman")
+sax[1].set_xlabel('sky area (deg)',  size=25,  fontname="Times New Roman")
 sax[1].set_xlim(-1, 2000)
 
 sax[0].legend(loc='upper left')
 sax[1].legend(loc='upper left')
 
 
-plt.gcf().set_size_inches(8, 10)
+
+#plt.gcf().set_size_inches(8, 10)
+plt.gcf().set_size_inches(20, 10)
 plt.subplots_adjust(
         right=0.9,
         wspace=0.4,
